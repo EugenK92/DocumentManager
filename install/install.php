@@ -3,7 +3,7 @@
  * Installationscript for DocumentManager
  */
 
-echo "Welcome to the installationguide for the DocumentManager.\n\n";
+echo "\nWelcome to the installationguide for the DocumentManager.\n\n";
 
 //check if libraries exists
 echo "Let me check for necessary libraries.\n";
@@ -19,17 +19,26 @@ if (!extension_loaded('zip')) {
 echo "\033[1;32mZip library successfully found.\033[1;37m\n";
 
 // create directories
-chdir('..');
-$rootdir = 'DocumentManager';
-$configdir = 'config/';
-$uploaddir = 'upload';
-$archivedir = 'archive';
+$rootdir = __DIR__;
+$rootdirarr = explode('/', $rootdir);
+$rootdir = "";
+for ($i = 1; $i < sizeof($rootdirarr) - 2; $i++) {
+    $rootdir .=  '/' . $rootdirarr[$i];
+}
 
-echo "Tell me, where is the upload directory? [\033[1;34mDocumentManager/upload/\033[1;37m] ";
+$configdir = $rootdir . '/DocumentManager/config';
+$uploaddir = $rootdir . '/DocumentManager/upload';
+$archivedir = $rootdir . '/DocumentManager/archive';
+
+echo "Tell me, where is the root directory? [\033[1;34m" . $rootdir . "\033[1;37m] ";
+$path = readline();
+$rootdir = $path == "" ? $rootdir : $path;
+
+echo "Tell me, where is the upload directory? [\033[1;34m" . $rootdir . "/DocumentManager/upload/\033[1;37m] ";
 $path = readline();
 $uploaddir = $path == "" ? $uploaddir : $path;
 
-echo "Tell me, where is the archive directory? [\033[1;34mDocumentManager/archive/\033[1;37m] ";
+echo "Tell me, where is the archive directory? [\033[1;34m" . $rootdir . "/DocumentManager/archive/\033[1;37m] ";
 $path = readline();
 $archivedir = $path == "" ? $archivedir : $path;
 
@@ -43,6 +52,7 @@ if (!is_dir($archivedir)) {
     mkdir($archivedir, 0755, true);
 }
 
+echo "Create config.xml file.\n";
 //create config.xml
 $xml = new DOMDocument();
 $xml->formatOutput = true;
@@ -55,5 +65,5 @@ $xml_directories->appendChild($xml_rootdir);
 $xml_directories->appendChild($xml_uploaddir);
 $xml_directories->appendChild($xml_archivedir);
 $xml->appendChild($xml_directories);
-$xml->save($configdir . "config.xml");
+$xml->save($configdir . "/config.xml");
 echo "\n";
