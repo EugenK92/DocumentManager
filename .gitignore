@@ -4,6 +4,8 @@ build/*
 phpdox.xml
 upload/
 upload/*
+!UploadClass/
+!UploadClass/*
 archive/
 archive/*
 config/

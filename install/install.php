@@ -30,6 +30,9 @@ $configdir = $rootdir . '/DocumentManager/config';
 $uploaddir = $rootdir . '/DocumentManager/upload';
 $archivedir = $rootdir . '/DocumentManager/archive';
 
+$chunksizeDownload_Parts = 5 * 1024 * 1024;
+$chunksizeDownload_Whole = 10 * 1024 * 1024;
+
 echo "Tell me, where is the root directory? [\033[1;34m" . $rootdir . "\033[1;37m] ";
 $path = readline();
 $rootdir = $path == "" ? $rootdir : $path;
@@ -41,6 +44,14 @@ $uploaddir = $path == "" ? $uploaddir : $path;
 echo "Tell me, where is the archive directory? [\033[1;34m" . $rootdir . "/DocumentManager/archive/\033[1;37m] ";
 $path = readline();
 $archivedir = $path == "" ? $archivedir : $path;
+
+echo "Tell me, which chunksize do you want for the download in parts (in bytes)? [\033[1;34m" . $chunksizeDownload_Parts . "\033[1;37m] ";
+$path = readline();
+$chunksizeDownload_Parts = $path == "" ? $chunksizeDownload_Parts : $path;
+
+echo "Tell me, which chunksize do you want for the whole download (in bytes)? [\033[1;34m" . $chunksizeDownload_Whole . "\033[1;37m] ";
+$path = readline();
+$chunksizeDownload_Whole = $path == "" ? $chunksizeDownload_Whole : $path;
 
 if (!is_dir($configdir)) {
     mkdir($configdir, 0755, true);
@@ -60,10 +71,16 @@ $xml_directories = $xml->createElement("Directories");
 $xml_rootdir = $xml->createElement("RootDirectory", $rootdir);
 $xml_uploaddir = $xml->createElement("UploadDirectory", $uploaddir);
 $xml_archivedir = $xml->createElement("ArchiveDirectory", $archivedir);
+$xml_wholedownload = $xml->createElement("WholeChunkSize", $chunksizeDownload_Whole);
+$xml_partdownload = $xml->createElement("PartChunkSize", $chunksizeDownload_Parts);
 
 $xml_directories->appendChild($xml_rootdir);
 $xml_directories->appendChild($xml_uploaddir);
 $xml_directories->appendChild($xml_archivedir);
+$xml_directories->appendChild($xml_wholedownload);
+$xml_directories->appendChild($xml_partdownload);
+
 $xml->appendChild($xml_directories);
+
 $xml->save($configdir . "/config.xml");
 echo "\n";
