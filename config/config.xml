@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<Directories>
+  <RootDirectory>DocumentManager</RootDirectory>
+  <UploadDirectory>upload</UploadDirectory>
+  <ArchiveDirectory>archive</ArchiveDirectory>
+</Directories>

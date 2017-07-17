@@ -2,3 +2,7 @@
 build/
 build/*
 phpdox.xml
+upload/
+upload/*
+archive/
+archive/*
