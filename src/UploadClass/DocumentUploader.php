@@ -13,7 +13,7 @@ class DocumentUploader {
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getFilename()
     {
@@ -21,7 +21,7 @@ class DocumentUploader {
     }
 
     /**
-     * @param mixed $filename
+     * @param string $filename
      */
     public function setFilename($filename)
     {
@@ -104,6 +104,5 @@ class DocumentUploader {
             return $e->getMessage();
         }
         return ['code' => 200, 'message' => 'File successfully uploaded!'];
-
     }
 }
