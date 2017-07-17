@@ -86,19 +86,24 @@ class DocumentUploader {
                 unlink($this->filename);
             }
         }
-        $file = fopen($this->filename, 'a');
-        fwrite($file, $currentFile);
-        fclose($file);
-        if (strpos($hierarchy, "/") != false) {
-            $this->changeToUploadDir(substr_count($hierarchy, "/"));
-            $dir =  explode("/", $hierarchy)[0];
-            $this->zipDir($dir);
-            $this->uploadFileName = $this->uploaddir . "/" . $dir . ".zip";
+        try {
+            $file = fopen($this->filename, 'a');
+            fwrite($file, $currentFile);
+            fclose($file);
+            if (strpos($hierarchy, "/") != false) {
+                $this->changeToUploadDir(substr_count($hierarchy, "/"));
+                $dir =  explode("/", $hierarchy)[0];
+                $this->zipDir($dir);
+                $this->uploadFileName = $this->uploaddir . "/" . $dir . ".zip";
+            }
+            else {
+                $this->uploadFileName = $this->uploaddir . "/" . $this->filename;
+            }
         }
-        else {
-            $this->uploadFileName = $this->uploaddir . "/" . $this->filename;
+        catch (Exception $e) {
+            return $e->getMessage();
         }
+        return ['code' => 200, 'message' => 'File successfully uploaded!'];
+
     }
 }
-
-new DocumentUploader();
