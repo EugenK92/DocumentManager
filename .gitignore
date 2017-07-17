@@ -6,3 +6,5 @@ upload/
 upload/*
 archive/
 archive/*
+config/
+config/*
