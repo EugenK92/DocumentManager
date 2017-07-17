@@ -74,7 +74,6 @@ class DocumentUploader {
 
     public function upload() {
         chdir($this->uploaddir);
-        $this->uploadDir = explode("/", $this->uploaddir)[1];
         $currentFile = base64_decode($_POST['blob']);
         $tmpName = $_POST['tmpname'];
         $hierarchy = $_POST['path'];
