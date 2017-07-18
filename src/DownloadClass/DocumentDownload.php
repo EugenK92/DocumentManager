@@ -19,11 +19,14 @@ class DocumentDownload {
         return finfo_file($finfo, $file);
     }
 
-    public function downloadWholeDocument($name) {
+    public function downloadWholeDocument($name, $test = false) {
         $file = $this->uploaddir . '/' . $name;
         $contentType = $this->getContentType($file);
         $out = fopen($file, "r");
         $len = $this->chunkWhole;
+        if ($test) {
+            return filesize($file);
+        }
         header('Content-Description: File Transfer');
         header('Content-Type: ' . $contentType);
         header('Content-Length: ' . filesize($file));
@@ -35,6 +38,7 @@ class DocumentDownload {
         }
         fclose($out);
         exit;
+
     }
 
     public function downloadPartDocument($name, $part) {
