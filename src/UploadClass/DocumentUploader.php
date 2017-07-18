@@ -72,15 +72,15 @@ class DocumentUploader {
         $zip->close();
     }
 
-    public function upload() {
+    public function upload($blob, $originalTmpname, $path, $originalPart) {
         chdir($this->uploaddir);
-        $currentFile = base64_decode($_POST['blob']);
-        $tmpName = $_POST['tmpname'];
-        $hierarchy = $_POST['path'];
+        $currentFile = base64_decode($blob);
+        $tmpName = $originalTmpname;
+        $hierarchy = $path;
         $this->createHierarchy($hierarchy);
         $this->filename = explode("_%_", $tmpName)[1];
         if (file_exists($this->filename)) {
-            $part = $_POST['part'];
+            $part = $originalPart;
             if ($part == 0) {
                 unlink($this->filename);
             }
