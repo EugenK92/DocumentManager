@@ -69,3 +69,11 @@ The response header are:<br>
     <li>HTTP_Current-Part</li>
 </ul>
 
+<h1>Test</h1>
+The code is tested with phpunit.<br>
+Navigate to the <strong>DocumentManager/</strong> directory and execute:<br>
+
+```php
+    phpunit
+```
+
