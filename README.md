@@ -58,7 +58,7 @@ Chunksize is 10MB (10 * 1024 * 1024)<br>
 <strong>$part</strong> - Part of a document.<br>
 <br>
 Chunksize is 5MB (5 * 1024 * 1024)<br>
-if the filesize is fewer than 5MB, then the chunksize is the filesize.<br> 
+if the filesize is less than 5MB, then the chunksize is the filesize.<br> 
 <br>
 The response header are:<br>
 <ul>
