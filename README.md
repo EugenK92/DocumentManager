@@ -1,5 +1,5 @@
 # DocumentManager
-DocumentManager is a tool, which helps you to upload and download Files.
+DocumentManager is a tool, which helps you to upload and download files.
 You can manage small files but also large ones.
 The download can be a whole file at once or in smaller parts.
 

@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class DocumentUploader
+ * Class for uploading Files (small and large ones)
+ * Large ones in parts
+ */
 class DocumentUploader {
 
     private $rootdir;
