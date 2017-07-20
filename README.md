@@ -9,7 +9,7 @@ Feel free to use, change and/or improve it!
 To install the DocumentManager in the right directory, navigate
 to the <strong>install/</strong> directory and<br>
 execute <strong>php install.php</strong> then follow the instructions<br>
-
+<br>
 ![Image](https://github.com/EugenK92/DocumentManager/blob/master/readme_assets/install.png)
 
 <h1>Usage</h1>
