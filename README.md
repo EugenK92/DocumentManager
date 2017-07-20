@@ -44,7 +44,8 @@ You can download a Document as whole or in parts.<br>
         $manager->downloadWholeDocument($name);
 ```
 
-<strong>$name</strong> - Name of a document.
+<strong>$name</strong> - Name of a document.<br>
+Chunksize is 5MB<br>
 
 <h3>Part download</h3>
 
@@ -55,6 +56,9 @@ You can download a Document as whole or in parts.<br>
 
 <strong>$name</strong> - Name of a document.<br>
 <strong>$part</strong> - Part of a document.<br>
+<br>
+Chunksize is 5MB <br>
+if the filesize is fewer than 5MB, then the chunksize is the filesize.<br> 
 <br>
 The response header are:<br>
 <ul>
