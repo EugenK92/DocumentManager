@@ -14,7 +14,7 @@ execute <strong>php install.php</strong> then follow the instructions<br>
 
 <h1>Usage</h1>
 <h2>Upload</h2>
-The minimal parameters for the Documentupload:<br>
+The parameters for the Documentupload:<br>
 
 ```php
     $manager = new DocumentUploader();
