@@ -45,7 +45,7 @@ You can download a Document as whole or in parts.<br>
 ```
 
 <strong>$name</strong> - Name of a document.<br>
-Chunksize is 5MB<br>
+Chunksize is 10MB<br>
 
 <h3>Part download</h3>
 
