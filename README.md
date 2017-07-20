@@ -76,4 +76,4 @@ Navigate to the <strong>DocumentManager/</strong> directory and execute:<br>
 ```php
     phpunit
 ```
-
+![Image](https://github.com/EugenK92/DocumentManager/blob/master/readme_assets/phpunit_tests.png)
