@@ -45,7 +45,7 @@ You can download a Document as whole or in parts.<br>
 ```
 
 <strong>$name</strong> - Name of a document.<br>
-Chunksize is 10MB<br>
+Chunksize is 10MB (10 * 1024 * 1024)<br>
 
 <h3>Part download</h3>
 
@@ -57,7 +57,7 @@ Chunksize is 10MB<br>
 <strong>$name</strong> - Name of a document.<br>
 <strong>$part</strong> - Part of a document.<br>
 <br>
-Chunksize is 5MB <br>
+Chunksize is 5MB (5 * 1024 * 1024)<br>
 if the filesize is fewer than 5MB, then the chunksize is the filesize.<br> 
 <br>
 The response header are:<br>
