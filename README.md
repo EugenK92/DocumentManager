@@ -1,7 +1,13 @@
 # DocumentManager
-Documentupload and download as generic as possible
+DocumentManager is a tool, which helps you to upload and download Files.
+You can manage small files but also large ones.
+The download can be a whole file at once or in smaller parts.
+
+Feel free to use, change and/or improve it!
 
 <h1>Installation</h1>
-navigate to the install/ directory<br>
-execute: <strong>php install.php</strong><br>
-follow the instructions
+To install the DocumentManager in the right directory, navigate
+to the <strong>install/</strong> directory and<br>
+execute <strong>php install.php</strong> then follow the instructions<br>
+
+![Alt text](readme_assets/install.png Instructions)
