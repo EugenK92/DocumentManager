@@ -10,4 +10,4 @@ To install the DocumentManager in the right directory, navigate
 to the <strong>install/</strong> directory and<br>
 execute <strong>php install.php</strong> then follow the instructions<br>
 
-![Image](readme_assets/install.png Instructions)
+![Image](readme_assets/install.png?raw=true Instructions)
