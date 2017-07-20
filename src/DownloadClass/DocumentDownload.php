@@ -41,7 +41,7 @@ class DocumentDownload {
 
     }
 
-    public function downloadPartDocument($name, $part) {
+    public function downloadPartDocument($name, $part, $test = false) {
         $file = $this->uploaddir . '/' . $name;
         $contentType = $this->getContentType($file);
         $out = fopen($file, "r");
@@ -75,6 +75,9 @@ class DocumentDownload {
         $end = $splitSize * ($part + 1);
         if ($end > $filesize) {
             $splitSize = ($filesize - $currentPosition);
+        }
+        if ($test) {
+            return $splitSize;
         }
         header('Content-Description: File Transfer');
         header('Content-Type: ' . $contentType);

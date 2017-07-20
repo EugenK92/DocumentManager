@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../src/UploadClass/DocumentUploader.php';
-require __DIR__ . '/../src/DownloadClass/DocumentDownload.php';
+require_once __DIR__ . '/../src/DownloadClass/DocumentDownload.php';
 
 class DocumentDownloadTest extends PHPUnit_Framework_TestCase {
 
@@ -28,7 +28,27 @@ class DocumentDownloadTest extends PHPUnit_Framework_TestCase {
         $this->assertEquals($result, filesize(__DIR__ . "/testfiles/" . $name));
     }
 
-//    public function testDownloadPartOfFile() {
-//
-//    }
+    public function testDownloadPartOfFile() {
+        $name = "small_file.jpg";
+        $this->uploadTestFile($name);
+        $downloader = new DocumentDownload();
+        $result = $downloader->downloadPartDocument($name, 0, true);
+        $this->assertEquals($result, filesize(__DIR__ . "/testfiles/" . $name));
+
+        $name = "big_file.jpeg";
+        $this->uploadTestFile($name);
+        $downloader = new DocumentDownload();
+        $result = $downloader->downloadPartDocument($name, 0, true);
+        $this->assertEquals($result, 5 * 1024 * 1024);
+    }
+
+    /**
+     * @expectedException Exception
+     */
+    public function testDownloadPartPutOfBounds() {
+        $name = "small_file.jpg";
+        $this->uploadTestFile($name);
+        $downloader = new DocumentDownload();
+        $downloader->downloadPartDocument($name, 5, true);
+    }
 }
