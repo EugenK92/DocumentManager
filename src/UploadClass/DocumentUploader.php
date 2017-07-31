@@ -78,7 +78,12 @@ class DocumentUploader {
     }
 
     public function upload($blob, $originalTmpname, $path, $originalPart) {
-        chdir($this->uploaddir);
+        try {
+            chdir($this->uploaddir);
+        }
+        catch (Exception $e) {
+            return $e;
+        }
         $currentFile = base64_decode($blob);
         $tmpName = $originalTmpname;
         $hierarchy = $path;
